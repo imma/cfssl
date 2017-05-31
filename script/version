@@ -4,7 +4,7 @@ function version {
   local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
   source "$shome/script/profile"
 
-  local ver_cfssl="0.0.1"
+  local ver_cfssl="$(cfssl version 2>/dev/null | awk '$1 == "Version:" { print $2 }' || true)"
   jq -n --arg cfssl "$ver_cfssl" '{cfssl: $cfssl}'
 }
 

@@ -2,11 +2,9 @@
 
 function _cfssl_profile {
   local shome="${_cfssl_home:-"$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"}"
-  PATH="$shome/bin:$shome/exec:$PATH"
-  export ANSIBLE_ROLES_PATH="${ANSIBLE_ROLES_PATH:+${ANSIBLE_ROLES_PATH}:}$shome/roles"
-  export ANSIBLE_LIBRARY="${ANSIBLE_LIBRARY:+${ANSIBLE_LIBRARY}:}$shome/library"
+  PATH="$shome/bin:$PATH"
 
-  CFSSL_VERSION='0.0.1'
+  CFSSL_VERSION='1.2.0'
 }
 
 _cfssl_profile

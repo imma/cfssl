@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 function _cfssl_profile {
-  local shome="${_cfssl_home:-"$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"}"
+  local shome="${_cfssl_home:="$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"}"
   PATH="$shome/bin:$PATH"
 
   CFSSL_VERSION='1.2.0'

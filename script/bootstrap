@@ -4,8 +4,12 @@ function main {
   local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
   source "$shome/script/profile"
 
-  export GOPATH="$shome"
+  cd "$shome"
+  eval "$(vg eval --shell bash)"
+  vg init --full-isolation 
   go get -u github.com/cloudflare/cfssl/cmd/cfssl...
+  mkdir -p "$shome/bin"
+  (set +f; ln -nfs $GOPATH/bin/cfssl* "$shome/bin/")
 }
 
 main "$@"
